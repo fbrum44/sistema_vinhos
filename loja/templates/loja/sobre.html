@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -12,38 +12,39 @@
 <body>
     <header>
         <div class="top-bar">
-            <div class="logo">winery</div>
+            <a href="index.html" class="logo">winery</a>
             <nav>
-                <a href="sobre.html">sobre</a>
+                <a href="#">sobre</a>
                 <a href="#">vinhos</a>
                 <a href="#">kits</a>
             </nav>
             <div class="search-login-cart">
                 <input type="text" placeholder="Pesquisar...">
-                <button id="openLoginBtn" class="login">login</button>
+                <a href="#" id="openLoginBtn" class="login">login</a>
                 <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="hero-image"></div>
+        <div class="adega"></div>
+        <section class="sobre">
+            <h1>Descubra a Winery</h1>
+            <p>uma vinícola onde tradição, inovação e paixão se unem para criar experiências inesquecíveis. Localizada em um dos vales mais exuberantes da região, a Winery é um destino obrigatório para os amantes de vinho e da boa vida.
+            Aqui, cada garrafa conta uma história. Das uvas colhidas à mão aos longos meses de amadurecimento em barris de carvalho, nossos vinhos são elaborados com rigor, cuidado e respeito à natureza. O resultado? Rótulos premiados, elegantes e cheios de personalidade, que encantam paladares no mundo todo.
+            Venha viver a experiência Winery: caminhe por vinhedos deslumbrantes, participe de degustações exclusivas, explore nossa enoteca e desfrute de uma gastronomia de excelência em nosso restaurante panorâmico, com vista de tirar o fôlego.
+            Mais do que uma vinícola, a Winery é um estilo de vida. Um convite para celebrar cada momento com um bom vinho, em um ambiente acolhedor, sofisticado e inspirador.
+
+            Winery, mais que vinho, uma experiência.</p>
+        </section>
     </main>
-
-    <footer>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fas fa-times"></i></a>
-        <a href="#"><i class="fas fa-envelope"></i></a>
-    </footer>
-
     <div id="loginModal" class="modal">
       <div class="modal-content">
         <span class="close-btn" id="closeLoginBtn">&times;</span>
         <h2>login</h2>
         <form>
           <label for="username">e-mail:</label>
-          <input type="text" id="username" name="username" placeholder="Digite seu e-mailstart index.html" required />
+          <input type="text" id="username" name="username" placeholder="Digite seu e-mail" required />
 
           <label for="password">senha:</label>
           <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
