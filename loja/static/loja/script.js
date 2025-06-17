@@ -1,0 +1,52 @@
+const loginModal = document.getElementById('loginModal');
+const registerModal = document.getElementById('registerModal');
+
+const openLoginBtn = document.getElementById('openLoginBtn');
+const closeLoginBtn = document.getElementById('closeLoginBtn');
+
+const openRegisterBtn = document.getElementById('openRegisterBtn');
+const closeRegisterBtn = document.getElementById('closeRegisterBtn');
+
+const openRegisterFromLogin = document.getElementById('openRegisterFromLogin');
+
+if (openLoginBtn) {
+    openLoginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginModal.style.display = 'block';
+    });
+}
+
+if (closeLoginBtn) {
+    closeLoginBtn.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+    });
+}
+
+if (openRegisterBtn) {
+    openRegisterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        registerModal.style.display = 'block';
+    });
+}
+
+if (closeRegisterBtn) {
+    closeRegisterBtn.addEventListener('click', () => {
+        registerModal.style.display = 'none';
+    });
+}
+
+if (openRegisterFromLogin) {
+    openRegisterFromLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginModal.style.display = 'none';
+        registerModal.style.display = 'block';
+    });
+}
+
+window.addEventListener('click', (e) => {
+    if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+    } else if (e.target === registerModal) {
+        registerModal.style.display = 'none';
+    }
+});
