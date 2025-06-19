@@ -50,3 +50,11 @@ window.addEventListener('click', (e) => {
         registerModal.style.display = 'none';
     }
 });
+
+window.onload = function () {
+    const messages = document.querySelectorAll('.mensagens li');
+    if (messages.length > 0) {
+        const registerModal = document.getElementById('registerModal');
+        registerModal.style.display = 'block';
+    }
+}
