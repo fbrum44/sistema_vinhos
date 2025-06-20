@@ -103,6 +103,6 @@ AUTH_USER_MODEL = 'loja.CustomUser'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 # MongoDB Atlas connectionss"
-MONGO_URI = "mongodb+srv://mizle:senha123@explotools.zldkd3g.mongodb.net/sistema_vinhos?retryWrites=true&w=majority"
+MONGO_URI = "url do mongo"
 
 
