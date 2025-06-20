@@ -3,6 +3,13 @@ from .forms import CadastroForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
+# MongoDB imports
+from .mongodb import db
+
+# Coleção de usuários no Mongo
+usuarios_collection = db['usuarios']
 
 
 def index(request):
@@ -21,10 +28,10 @@ def cadastro_view(request):
             messages.success(request, "Cadastro realizado com sucesso!")
             return redirect('index')
         else:
-                for field, errors in form.errors.items():
-                    for error in errors:
-                        messages.error(request, f"Erro em {field}: {error}")
-                return redirect('index')
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"Erro em {field}: {error}")
+            return redirect('index')
     else:
         return redirect('index')
 
@@ -46,3 +53,28 @@ def login_view(request):
 def dashboard(request):
     user = request.user
     return render(request, 'loja/dashboard.html', {'user': user})
+
+def cadastrar_usuario(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        nascimento = request.POST.get('nascimento')
+        cpf = request.POST.get('cpf')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+
+        novo_usuario = {
+            'nome': nome,
+            'nascimento': nascimento,
+            'cpf': cpf,
+            'email': email,
+            'senha': senha
+        }
+
+        usuarios_collection.insert_one(novo_usuario)
+        return redirect('listar_usuarios')
+
+    return render(request, 'loja/cadastrar_usuario.html')
+
+def listar_usuarios(request):
+    usuarios = list(usuarios_collection.find())
+    return render(request, 'loja/listar_usuarios.html', {'usuarios': usuarios})
