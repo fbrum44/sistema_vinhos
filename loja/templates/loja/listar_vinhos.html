@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% load static %}
+<head>
+    <meta charset="UTF-8" />
+    <title>Lista de Vinhos</title>
+      <style>
+        .vinho {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .vinho img {
+            width: 80px;
+            height: auto;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Vinhos</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tipo do Vinho</th>
+                <th>Tipo da Uva</th>
+                <th>País de Origem</th>
+                <th>Safra</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Imagem</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vinho in vinhos %}
+                <tr>
+                    <td>{{ vinho.tipo_do_vinho }}</td>
+                    <td>{{ vinho.tipo_da_uva }}</td>
+                    <td>{{ vinho.pais_origem }}</td>
+                    <td>{{ vinho.safra }}</td>
+                    <td>{{ vinho.quantidade }}</td>
+                    <td>R$ {{ vinho.preco|floatformat:2 }}</td>
+                    <td>
+                        {% if vinho.imagem_url %}
+                            <img src="{% static 'loja/imagens/' %}{{ vinho.imagem_url }}" alt="Imagem do vinho" style="width: 80px; height: auto;">
+                        {% else %}
+                            Sem imagem
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">Nenhum vinho cadastrado ainda.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'cadastrar_vinho' %}">← Voltar para o cadastro</a>
+</body>
+</html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winery</title>
-    <link rel="stylesheet" href="{% static 'loja/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'loja/css/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -42,15 +42,13 @@
       <div class="modal-content">
         <span class="close-btn" id="closeLoginBtn">&times;</span>
         <h2>login</h2>
-        {% if messages %}
-          <ul class="mensagens">
-            {% for message in messages %}
-              {% if 'Usuário' in message or 'senha' in message %}
+          {% if messages %}
+            <ul class="mensagens">
+              {% for message in messages %}
                 <li class="{{ message.tags }}">{{ message }}</li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        {% endif %}
+          {% endfor %}
+            </ul>
+          {% endif %}
         <form method="POST" action="{% url 'login' %}">
           {% csrf_token %}
           <label for="username">e-mail:</label>
@@ -105,6 +103,6 @@
         </div>
     </div>
 
-    <script src="{% static 'loja/script.js' %}"></script>
+    <script src="{% static 'loja/js/script.js' %}"></script>
 </body>
 </html>

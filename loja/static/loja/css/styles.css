@@ -61,13 +61,13 @@ nav a {
 }
 
 .hero-image {
-    background-image: url('imagens/vinho.png');
+    background-image: url('../imagens/vinho.png');
     height: 88.74vh;
     background-size: cover;
     background-position: center;
 }
 .adega {
-    background-image: url('imagens/adega.png');
+    background-image: url('../imagens/adega.png');
     background-color: #FFF7EF;
     background-size: contain;  
     background-position: right center; 

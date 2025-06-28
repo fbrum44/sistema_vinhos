@@ -53,8 +53,22 @@ window.addEventListener('click', (e) => {
 
 window.onload = function () {
     const messages = document.querySelectorAll('.mensagens li');
+
     if (messages.length > 0) {
-        const registerModal = document.getElementById('registerModal');
-        registerModal.style.display = 'block';
+            let modalParaAbrir = 'register';
+             mensagens.forEach((msg) => {
+            const tipo = msg.getAttribute('data-tag');
+            if (tipo === 'error') {
+                modalParaAbrir = 'login';
+            } else if (tipo === 'success') {
+                modalParaAbrir = 'register'; 
+            }
+        });
+
+        if (modalParaAbrir === 'login') {
+            if (loginModal) loginModal.style.display = 'block';
+        } else if (modalParaAbrir === 'register') {
+            if (registerModal) registerModal.style.display = 'block';
+        }
     }
 }

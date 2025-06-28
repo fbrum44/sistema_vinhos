@@ -6,4 +6,5 @@ client = MongoClient(settings.MONGO_URI)
 
 db = client.get_database() 
 
-produtos_collection = db['produtos']
+vinhos_collection = db['vinhos']
+usuarios_collection = db['usuarios']

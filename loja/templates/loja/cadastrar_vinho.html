@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cadastrar Vinho</title>
+    {% load static %}
+</head>
+<body>
+    
+    <h1>Cadastrar Vinho</h1>
+
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li style="color: green;">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Tipo do Vinho:</label><br />
+        <input type="text" name="tipo_vinho" required /><br />
+
+        <label>Uva:</label><br />
+        <input type="text" name="tipo_uva" required /><br />
+
+        <label>País de Origem:</label><br />
+        <input type="text" name="pais_origem" required /><br />
+
+        <label>Safra:</label><br />
+        <input type="number" name="safra" required /><br />
+
+        <label for="quantidade">Quantidade em estoque:</label><br />
+        <input type="number" name="quantidade" id="quantidade" required><br />
+
+        <label for="preco">Preço (R$):</label><br />
+        <input type="number" name="preco" id="preco" step="0.01" required><br />
+
+        <label for="imagem">Nome da imagem:</label><br />
+        <input type="text" name="imagem" id="imagem"><br />
+
+        <button type="submit">Cadastrar</button><br />
+        <a href="{% url 'listar_vinhos' %}"><button type="button">Ver Vinhos Cadastrados</button></a>
+    </form>
+</body>
+</html>
