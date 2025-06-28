@@ -1,4 +1,7 @@
 from pathlib import Path
+import os
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -103,6 +106,7 @@ AUTH_USER_MODEL = 'loja.CustomUser'
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 # MongoDB Atlas connectionss"
-MONGO_URI = "url do mongo"
+MONGO_URI = os.environ.get('MONGO_URI')
+MONGO_URI = config('MONGO_URI')
 
 
