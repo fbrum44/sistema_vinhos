@@ -20,3 +20,6 @@ staticfiles/
 # IDEs e editores
 .vscode/
 .idea/
+
+.env
+
