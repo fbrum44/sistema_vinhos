@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Compras - Winery</title>
+    
+    <link rel="stylesheet" href="{% static 'loja/css/historico.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <a href="index.html" class="logo">winery</a>
+            <nav>
+                <a href="#">sobre</a>
+                <a href="#">vinhos</a>
+                <a href="#">kits</a>
+            </nav>
+            <div class="search-login-cart">
+                <div class="search-container">
+                    <input type="text" placeholder="buscar vinhos">
+                </div>
+                <a href="meuperfil.html" class="login">meu perfil</a>
+                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="history-page">
+        <div class="history-container">
+            <h2 class="history-title">histórico de compras</h2>
+
+            <div class="purchases-grid">
+                <a href="#" class="purchase-item">
+                    <span>Vinho Tinto Suave safra 2023 x1</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="#" class="purchase-item">
+                    <span>Kit Degustação Essencial x1</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="#" class="purchase-item">
+                    <span>Espumante Brut Rosé x2</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="#" class="purchase-item">
+                    <span>Vinho Branco Seco Chardonnay x1</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="#" class="purchase-item">
+                    <span>Taças de Cristal (Conjunto com 2) x1</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a href="#" class="purchase-item">
+                    <span>Vinho do Porto Tawny x1</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

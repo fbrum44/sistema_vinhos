@@ -1,0 +1,270 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FEFBF7; /* Cor de fundo creme para a página toda */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+.header {
+    background-color: #FFF7EF;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'italianno', cursive;
+    color: #9C0000;
+    font-size: 85px;
+    text-decoration: none;
+}
+
+.nav-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-bar i {
+    position: absolute;
+    left: 15px;
+    color: #aaa;
+}
+.search-bar input {
+    padding: 8px 15px 8px 40px;
+    border-radius: 20px;
+    border: 1px solid #D1CFCF;
+    width: 250px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.user-actions a {
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+    font-weight: 500;
+}
+.user-actions .cart-icon i {
+    font-size: 22px;
+}
+
+/* Main Content - Cart Page */
+.main-content {
+    padding: 40px 0;
+}
+
+.cart-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #8c262d;
+    margin-bottom: 30px;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-title i {
+    font-size: 2.2rem;
+}
+
+.cart-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Cart Items Section */
+.cart-items {
+    /* Ajuste para que a coluna de itens seja um pouco maior que a de resumo, mas não o dobro */
+    flex: 1.5; 
+    background-color: #fff;
+    border-radius: 10px; /* Aumentado para 10px */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra mais visível */
+    padding: 72px; /* Aumenta o padding interno */
+    min-width: 450px; /* Garante um tamanho mínimo */
+}
+
+.cart-item {
+    display: flex;
+    /* Alinha os itens ao centro verticalmente */
+    align-items: center; 
+    gap: 40px; /* Aumenta o espaço entre a imagem e os detalhes */
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.item-image img {
+    width: 150px; /* Aumenta o tamanho da imagem para 150px */
+    height: auto;
+    border-radius: 8px;
+    /* Adiciona uma sombra para a imagem, como na imagem de referência */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    /* Alinha os itens à esquerda */
+    align-items: flex-start;
+    /* Centraliza os itens verticalmente dentro do container de detalhes */
+    justify-content: center;
+    gap: 10px;
+    /* Permite que o container de detalhes ocupe o espaço restante */
+    flex-grow: 1; 
+}
+
+.item-name {
+    font-size: 1.6rem; /* Aumenta o tamanho da fonte */
+    font-weight: 600;
+    text-transform: lowercase;
+    color: #333;
+    margin-bottom: 5px; /* Adiciona uma margem inferior para separar do preço */
+}
+
+.item-price {
+    font-size: 1.3rem; /* Aumenta o tamanho da fonte */
+    font-weight: 500;
+    color: #8c262d;
+    margin-bottom: 15px; /* Adiciona uma margem inferior para separar do botão */
+}
+
+.remove-btn {
+    background-color: #8c262d;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: background-color 0.3s ease;
+    /* Centraliza o botão com o texto */
+    align-self: flex-start;
+}
+
+.remove-btn:hover {
+    background-color: #6a1c22;
+}
+
+.continue-shopping {
+    margin-top: 15px;
+    font-weight: 500;
+    text-transform: lowercase;
+    color: #8c262d;
+    /* Ajusta a posição do link para ficar alinhado */
+    align-self: flex-start;
+}
+
+/* Cart Summary Section */
+.cart-summary {
+    /* Ajuste para que a coluna de resumo seja um pouco menor */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 300px; /* Garante um tamanho mínimo */
+}
+
+.summary-box {
+    background-color: #fff;
+    border-radius: 10px; /* Aumentado para 10px */
+    padding: 20px 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra mais visível */
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+
+.summary-line span:last-child {
+    font-weight: 600;
+    color: #8c262d;
+}
+
+.total-box {
+    border-radius: 10px; /* Mantém o border-radius */
+    border: 2px solid #9C0000; /* Adiciona uma borda para destacar o box total */
+}
+
+.total-box .summary-line {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.collapsible .summary-line {
+    cursor: pointer;
+}
+
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible-header i {
+    transition: transform 0.3s ease;
+}
+
+.collapsible-content {
+    display: none; /* Hidden by default */
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 15px;
+}
+
+.collapsible.active .collapsible-content {
+    display: block;
+}
+
+.collapsible.active .collapsible-header i {
+    transform: rotate(180deg);
+}

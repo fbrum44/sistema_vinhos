@@ -14,4 +14,8 @@ urlpatterns = [
     path('editar-perfil/', views.editar_perfil, name='editar_perfil'),
     path('logout/', views.logout_view, name='logout'),
     path('excluir-conta/', views.excluir_conta, name='excluir_conta'),
+    path('catalogo/', views.catalogo, name='catalogo'),
+    path('adicionar_ao_carrinho/<str:vinho_id>/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
+    path('meu_carrinho/', views.meu_carrinho, name='meu_carrinho'), 
+    path('historico/', views.historico, name='historico'),   
 ]

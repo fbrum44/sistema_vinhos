@@ -5,6 +5,8 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
 from loja.mongodb import usuarios_collection, vinhos_collection
 from datetime import datetime
+from bson.objectid  import ObjectId
+
 
 
 # MongoDB imports
@@ -150,9 +152,9 @@ def cadastrar_vinho(request):
             return render(request, 'loja/cadastrar_vinho.html')
 
         novo_vinho = {
-            "tipo_do_vinho": tipo_vinho,
-            "tipo_da_uva": tipo_uva,
-            "pais_origem": pais,
+            "tipo_do_vinho": tipo_vinho.title(),
+            "tipo_da_uva": tipo_uva.title(),
+            "pais_origem": pais.title(),
             "safra": int(safra),
             "quantidade": int(quantidade),
             "preco": float(preco),
@@ -228,3 +230,66 @@ def excluir_conta(request):
     request.session.flush()  
     messages.success(request, "Conta excluída com sucesso.")
     return redirect('index')
+
+def catalogo(request):
+    
+    tipos = request.GET.getlist('tipo')
+    uvas = request.GET.getlist('uva')
+    paises = request.GET.getlist('pais')
+
+    query = {}
+
+    if tipos:
+        query['tipo_do_vinho'] = {"$in": tipos}
+    if uvas:
+        query['tipo_da_uva'] = {"$in": uvas}
+    if paises:
+        query['pais_origem'] = {"$in": paises}
+
+    vinhos = list(vinhos_collection.find(query))
+
+    for vinho in vinhos:
+        vinho['id'] = str(vinho['_id'])
+
+    return render(request, 'loja/catalogo.html', {
+    'vinhos': vinhos,
+    'filtros': {
+        'tipo': tipos,
+        'uva': uvas,
+        'pais': paises
+    }
+})
+
+def adicionar_ao_carrinho(request, vinho_id):
+    vinho = vinhos_collection.find_one({"_id": ObjectId(vinho_id)})
+    if not vinho:
+        messages.error(request, "Vinho não encontrado.")
+        return redirect('catalogo')
+
+    carrinho = request.session.get('carrinho', [])
+
+    # Adiciona o vinho ao carrinho
+    carrinho.append({
+        "id": str(vinho['_id']),
+        "nome": vinho.get("tipo_do_vinho", "Vinho"),
+        "preco": vinho.get("preco", 0.0),
+        "imagem": vinho.get("imagem_url", ""),
+        "quantidade": 1 
+    })
+
+    request.session['carrinho'] = carrinho
+    request.session.modified = True
+
+    return redirect('meu_carrinho')
+
+def meu_carrinho(request):
+    carrinho = request.session.get('carrinho', [])
+    total = sum(item['preco'] * item['quantidade'] for item in carrinho)
+
+    return render(request, 'loja/meu_carrinho.html', {
+        'carrinho': carrinho,
+        'total': total
+    })
+
+def historico(request):
+    return render(request, 'loja/historico.html')
