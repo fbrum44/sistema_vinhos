@@ -8,3 +8,4 @@ db = client.get_database()
 
 vinhos_collection = db['vinhos']
 usuarios_collection = db['usuarios']
+historico_collection = db['historico']

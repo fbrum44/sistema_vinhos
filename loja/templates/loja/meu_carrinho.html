@@ -43,19 +43,24 @@
                         <div class="item-details">
                             <span class="item-name">{{ item.nome }} x {{ item.quantidade }}</span>
                             <span class="item-price">R${{ item.preco|floatformat:2 }}</span>
-                            <!-- futuro: botão de remover -->
+                            <form method="post" action="{% url 'remover_do_carrinho' item.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="remove-btn">Excluir</button>
+                            </form>
                         </div>
                     </div>
                 {% endfor %}
-
             <div class="summary-line">
                 <span>Total</span>
                 <span>R$ {{ total|floatformat:2}}</span>
             </div>
                 </aside>
-            <button class="remove-btn">excluir</button>
-            <a href="{% url 'catalogo' %}" class="continue-shopping">continuar comprando</a>
-            </div>
+            <a href="{% url 'catalogo' %}" class="continue-shopping">Continuar comprando</a>    
+             </div>
+            <form action="{% url 'efetuar_pagamento' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="finalizar-btn">Efetuar pagamento</button>
+            </form>
         </div>
     </main>
 </body>

@@ -14,6 +14,7 @@ from .mongodb import db
 
 # Coleção de usuários no Mongo
 usuarios_collection = db['usuarios']
+historico_collection = db['historico']
 
 
 def index(request):
@@ -276,6 +277,7 @@ def adicionar_ao_carrinho(request, vinho_id):
     carrinho.append({
         "id": str(vinho['_id']),
         "nome": vinho.get("tipo_do_vinho", "Vinho"),
+        "uva": vinho.get("tipo_da_uva", ""),
         "preco": vinho.get("preco", 0.0),
         "imagem": vinho.get("imagem_url", ""),
         "quantidade": 1 
@@ -299,5 +301,49 @@ def meu_carrinho(request):
         'total': total
     })
 
+def remover_do_carrinho(request, vinho_id):
+    carrinho = request.session.get('carrinho', [])
+    novo_carrinho = [item for item in carrinho if item['id'] != vinho_id]
+
+    request.session['carrinho'] = novo_carrinho
+    request.session.modified = True
+
+    return redirect('meu_carrinho')
+
+def efetuar_pagamento(request):
+    if not request.session.get('usuario_email'):
+        messages.error(request, "Você precisa estar logado para finalizar a compra.")
+        return redirect('index')
+
+    carrinho = request.session.get('carrinho', [])
+    if not carrinho:
+        messages.warning(request, "Seu carrinho está vazio.")
+        return redirect('meu_carrinho')
+
+    total = sum(item['preco'] * item['quantidade'] for item in carrinho)
+
+    historico_collection.insert_one({
+        "usuario_email": request.session['usuario_email'],
+        "data_compra": datetime.now(),
+        "itens": carrinho,
+        "total": total
+    })
+
+    # Limpa o carrinho
+    request.session['carrinho'] = []
+    request.session.modified = True
+
+    messages.success(request, "Compra finalizada com sucesso!")
+    return redirect('dashboard')
+
 def historico(request):
-    return render(request, 'loja/historico.html')
+    if not request.session.get('usuario_email'):
+        messages.error(request, "Você precisa estar logado para ver o histórico.")
+        return redirect('index')
+
+    compras = list(historico_collection.find({
+        "usuario_email": request.session['usuario_email']
+    }).sort("data_compra", -1))
+
+    return render(request, 'loja/historico.html', {'compras': compras})
+

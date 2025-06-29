@@ -14,51 +14,40 @@
 <body>
     <header>
         <div class="top-bar">
-            <a href="index.html" class="logo">winery</a>
+            <a href="{% url 'index' %}" class="logo">winery</a>
             <nav>
-                <a href="#">sobre</a>
-                <a href="#">vinhos</a>
+                <a href="{% url 'sobre' %}">sobre</a>
+                <a href="{% url 'catalogo' %}">vinhos</a>
                 <a href="#">kits</a>
             </nav>
             <div class="search-login-cart">
                 <div class="search-container">
                     <input type="text" placeholder="buscar vinhos">
                 </div>
-                <a href="meuperfil.html" class="login">meu perfil</a>
-                <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+                <a href="{% url 'dashboard' %}" class="login">meu perfil</a>
+                <a href="{% url 'meu_carrinho' %}" class="cart"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </div>
     </header>
 
     <main class="history-page">
         <div class="history-container">
-            <h2 class="history-title">histórico de compras</h2>
+            <h2 class="history-title">Histórico de compras</h2>
 
-            <div class="purchases-grid">
-                <a href="#" class="purchase-item">
-                    <span>Vinho Tinto Suave safra 2023 x1</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <a href="#" class="purchase-item">
-                    <span>Kit Degustação Essencial x1</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <a href="#" class="purchase-item">
-                    <span>Espumante Brut Rosé x2</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <a href="#" class="purchase-item">
-                    <span>Vinho Branco Seco Chardonnay x1</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <a href="#" class="purchase-item">
-                    <span>Taças de Cristal (Conjunto com 2) x1</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <a href="#" class="purchase-item">
-                    <span>Vinho do Porto Tawny x1</span>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
+            {% for compra in compras %}
+                <div class="compra">
+                    <p><strong>Data:</strong> {{ compra.data_compra|date:"d/m/Y H:i" }}</p>
+                    <ul>
+                        {% for item in compra.itens %}
+                            <li>{{ item.nome }} - {{ item.uva }} - R$ {{ item.preco|floatformat:2 }} x {{ item.quantidade }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p><strong>Total:</strong> R$ {{ compra.total|floatformat:2 }}</p>
+                    <hr>
+                </div>
+                {% empty %}
+                <p>Você ainda não fez nenhuma compra.</p>
+            {% endfor %}
             </div>
         </div>
     </main>
