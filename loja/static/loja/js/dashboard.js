@@ -25,23 +25,7 @@ editButton.addEventListener('click', () => {
     document.getElementById('senha').value = '';
     document.getElementById('confirmar-senha').value = '';
 });
-logoutButton.addEventListener('click', () => {
-    const confirmar = confirm('Deseja realmente fazer logout?');
-    if (confirmar) {
-        alert('Logout realizado!');
-        // trocar para as paginas q devem ir
-        window.location.href = 'login.html';
-    }
-});
 
-deleteButton.addEventListener('click', () => {
-    const confirmar = confirm('Tem certeza que deseja excluir sua conta? Esta ação não poderá ser desfeita.');
-    if (confirmar) {
-        alert('Conta excluída com sucesso.');
-        // trocar para as paginas q devem ir
-        window.location.href = 'index.html';
-    }
-});
 cancelButton.addEventListener('click', () => {
     container.classList.remove('is-editing');
     form.reset();
@@ -73,4 +57,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         cpfInput.value = value;
     });
+});
+
+document.getElementById('logout-form').addEventListener('submit', function (e) {
+    if (!confirm('Deseja realmente fazer logout?')) {
+        e.preventDefault();
+    }
+});
+
+document.getElementById('delete-form').addEventListener('submit', function (e) {
+    if (!confirm('Tem certeza que deseja excluir sua conta? Esta ação não poderá ser desfeita.')) {
+        e.preventDefault();
+    }
 });

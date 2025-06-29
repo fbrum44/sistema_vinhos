@@ -12,4 +12,6 @@ urlpatterns = [
     path('cadastrar-vinho/', views.cadastrar_vinho, name='cadastrar_vinho'),
     path('vinhos/', views.listar_vinhos, name='listar_vinhos'),
     path('editar-perfil/', views.editar_perfil, name='editar_perfil'),
+    path('logout/', views.logout_view, name='logout'),
+    path('excluir-conta/', views.excluir_conta, name='excluir_conta'),
 ]

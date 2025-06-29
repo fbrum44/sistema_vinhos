@@ -213,3 +213,18 @@ def editar_perfil(request):
         "cpf": usuario.get("cpf", ""),
         "email": usuario.get("email", "")
     })
+
+def logout_view(request):
+    request.session.flush()  # limpa toda a sessão do usuário
+    messages.success(request, "Logout realizado com sucesso.")
+    return redirect('index')  
+
+def excluir_conta(request):
+    if 'usuario_email' not in request.session:
+        messages.error(request, "Você precisa estar logado para excluir a conta.")
+        return redirect('index')
+
+    usuarios_collection.delete_one({'email': request.session['usuario_email']})
+    request.session.flush()  
+    messages.success(request, "Conta excluída com sucesso.")
+    return redirect('index')
