@@ -15,8 +15,8 @@
        <a href="{% url 'index' %}" class="logo">winery</a>
         <nav class="nav-menu">
             <ul>
-                <li><a href="#">sobre</a></li>
-                <li><a href="#">vinhos</a></li>
+                <li><a href="{% url 'sobre' %}">sobre</a></li>
+                <li><a href="{% url 'catalogo' %}">vinhos</a></li>
                 <li><a href="#">kits</a></li>
             </ul>
         </nav>
@@ -54,7 +54,7 @@
             </div>
                 </aside>
             <button class="remove-btn">excluir</button>
-            <a href="#" class="continue-shopping">continuar comprando</a>
+            <a href="{% url 'catalogo' %}" class="continue-shopping">continuar comprando</a>
             </div>
         </div>
     </main>

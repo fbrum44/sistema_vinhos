@@ -261,6 +261,10 @@ def catalogo(request):
 })
 
 def adicionar_ao_carrinho(request, vinho_id):
+    if 'usuario_email' not in request.session:
+        messages.error(request, "Você precisa estar logado para adicionar itens ao carrinho.")
+        return redirect('index') 
+    
     vinho = vinhos_collection.find_one({"_id": ObjectId(vinho_id)})
     if not vinho:
         messages.error(request, "Vinho não encontrado.")
@@ -283,6 +287,10 @@ def adicionar_ao_carrinho(request, vinho_id):
     return redirect('meu_carrinho')
 
 def meu_carrinho(request):
+    if 'usuario_email' not in request.session:
+        messages.error(request, "Você precisa estar logado para acessar o carrinho.")
+        return redirect('index')
+    
     carrinho = request.session.get('carrinho', [])
     total = sum(item['preco'] * item['quantidade'] for item in carrinho)
 
