@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Compras - Winery</title>
+    
+    <link rel="stylesheet" href="{% static 'loja/css/historico.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <a href="{% url 'index' %}" class="logo">winery</a>
+            <nav>
+                <a href="{% url 'sobre' %}">sobre</a>
+                <a href="{% url 'catalogo' %}">vinhos</a>
+                <a href="#">kits</a>
+            </nav>
+            <div class="search-login-cart">
+                <div class="search-container">
+                    <input type="text" placeholder="buscar vinhos">
+                </div>
+                <a href="{% url 'dashboard' %}" class="login">meu perfil</a>
+                <a href="{% url 'meu_carrinho' %}" class="cart"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="history-page">
+        <div class="history-container">
+            <h2 class="history-title">Histórico de compras</h2>
+
+            {% for compra in compras %}
+                <div class="compra">
+                    <p><strong>Data:</strong> {{ compra.data_compra|date:"d/m/Y H:i" }}</p>
+                    <ul>
+                        {% for item in compra.itens %}
+                            <li>{{ item.nome }} - {{ item.uva }} - R$ {{ item.preco|floatformat:2 }} x {{ item.quantidade }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p><strong>Total:</strong> R$ {{ compra.total|floatformat:2 }}</p>
+                    <hr>
+                </div>
+                {% empty %}
+                <p>Você ainda não fez nenhuma compra.</p>
+            {% endfor %}
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

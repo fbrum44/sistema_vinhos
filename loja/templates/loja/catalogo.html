@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="{% static 'loja/css/catalogo.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'index' %}" class="logo">winery</a>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'sobre' %}">Sobre</a></li>
+                <a href="{% url 'catalogo' %}">Vinhos</a>
+                <li><a href="#">Kits</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="buscar vinhos">
+        </div>
+        <div class="user-actions">
+            <a href="{% url 'dashboard' %}" class="login-link">Login</a>
+            <a href="{% url 'meu_carrinho' %}" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+    <div class="page-title-container">
+        <h1 class="catalog-title">Catálogo</h1>
+    </div>
+
+    <main class="main-content">
+    <form id="filtro-form" method="get">
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3>— tipos de vinho</h3>
+                <label><input type="checkbox" name="tipo" value="Tinto" {% if 'Tinto' in filtros.tipo %}checked{% endif %}> Tinto</label>
+                <label><input type="checkbox" name="tipo" value="Branco" {% if 'Branco' in filtros.tipo %}checked{% endif %}> Branco</label>
+                <label><input type="checkbox" name="tipo" value="Rosé" {% if 'Rosé' in filtros.tipo %}checked{% endif %}> Rosé</label>
+                <label><input type="checkbox" name="tipo" value="Frisante Branco" {% if 'Frisante Branco' in filtros.tipo %}checked{% endif %}> Frisante Branco</label>
+                <label><input type="checkbox" name="tipo" value="Espumante" {% if 'Espumante' in filtros.tipo %}checked{% endif %}> Espumantes</label>
+
+            </div>
+
+            <div class="filter-section">
+                <h3>— países</h3>
+                <label><input type="checkbox" name="pais" value="Argentina" {% if 'Argentina' in filtros.pais %}checked{% endif %}> Argentina</label>
+                <label><input type="checkbox" name="pais" value="Brasil" {% if 'Brasil' in filtros.pais %}checked{% endif %}> Brasil</label>
+                <label><input type="checkbox" name="pais" value="Chile" {% if 'Chile' in filtros.pais %}checked{% endif %}> Chile</label>
+                <label><input type="checkbox" name="pais" value="Portugal" {% if 'Portugal' in filtros.pais %}checked{% endif %}> Portugal</label>
+                <label><input type="checkbox" name="pais" value="Itália" {% if 'Itália' in filtros.pais %}checked{% endif %}> Itália</label>
+                <label><input type="checkbox" name="pais" value="França" {% if 'França' in filtros.pais %}checked{% endif %}> França</label>
+                <label><input type="checkbox" name="pais" value="Espanha" {% if 'Espanha' in filtros.pais %}checked{% endif %}> Espanha</label>
+                <label><input type="checkbox" name="pais" value="Nova Zelândia" {% if 'Nova Zelândia' in filtros.pais %}checked{% endif %}> Nova Zelândia</label>
+            </div>
+
+            <div class="filter-section">
+                <h3>— uvas</h3>
+                <label><input type="checkbox" name="uva" value="Cabernet Sauvignon" {% if 'Cabernet Sauvignon' in filtros.uva %}checked{% endif %}> Cabernet Sauvignon</label>
+                <label><input type="checkbox" name="uva" value="Merlot" {% if 'Merlot' in filtros.uva %}checked{% endif %}> Merlot</label>
+                <label><input type="checkbox" name="uva" value="Malbec" {% if 'Malbec' in filtros.uva %}checked{% endif %}> Malbec</label>
+                <label><input type="checkbox" name="uva" value="Grenache" {% if 'Grenache' in filtros.uva %}checked{% endif %}> Grenache</label>
+                <label><input type="checkbox" name="uva" value="Pinot Noir" {% if 'Pinot Noir' in filtros.uva %}checked{% endif %}> Pinot Noir</label>
+                <label><input type="checkbox" name="uva" value="Chardonnay" {% if 'Chardonnay' in filtros.uva %}checked{% endif %}> Chardonnay</label>
+                <label><input type="checkbox" name="uva" value="Prosecco" {% if 'Prosecco' in filtros.uva %}checked{% endif %}> Prosecco</label>
+                <label><input type="checkbox" name="uva" value="Sauvignon Blanc" {% if 'Sauvignon Blanc' in filtros.uva %}checked{% endif %}> Sauvignon Blanc</label>
+            </div>
+        </aside>
+    </form>
+
+    <section class="catalog">
+        <div class="product-grid">
+           {% for vinho in vinhos %}
+            <div class="product-card">
+                <img src="{% static 'loja/imagens/' %}{{ vinho.imagem_url }}" alt="Imagem de {{ vinho.tipo_do_vinho }}" class="product-image">
+                <div class="product-info">
+                    <p class="product-name">{{ vinho.tipo_do_vinho|title }} - {{ vinho.tipo_da_uva|title }}</p>
+                    <p class="product-price">R${{ vinho.preco|floatformat:2 }}</p>
+                    <a href="{% url 'adicionar_ao_carrinho' vinho.id %}"><button class="add-to-cart">Colocar no carrinho</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+    <script src="{% static 'loja/js/catalogo.js' %}"></script>
+    </main>
+</body>
+</html>

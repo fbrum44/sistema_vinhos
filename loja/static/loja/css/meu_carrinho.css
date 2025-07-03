@@ -1,0 +1,332 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FEFBF7; /* Cor de fundo creme para a página toda */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+.header {
+    background-color: #FFF7EF;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'italianno', cursive;
+    color: #9C0000;
+    font-size: 85px;
+    text-decoration: none;
+}
+
+.nav-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-bar i {
+    position: absolute;
+    left: 15px;
+    color: #aaa;
+}
+.search-bar input {
+    padding: 8px 15px 8px 40px;
+    border-radius: 20px;
+    border: 1px solid #D1CFCF;
+    width: 250px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.user-actions a {
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+    font-weight: 500;
+}
+.user-actions .cart-icon i {
+    font-size: 22px;
+}
+
+/* Main Content - Cart Page */
+.main-content {
+    padding: 40px 0;
+}
+
+.cart-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #8c262d;
+    margin-bottom: 30px;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-title i {
+    font-size: 2.2rem;
+}
+
+.cart-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Cart Items Section */
+.cart-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    flex: 2;
+}
+
+.cart-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    padding-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.item-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.item-image img {
+    max-width: 120px;
+    max-height: 180px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.item-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.item-price {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #8c262d;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.remove-btn {
+    background-color: #8c262d;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    margin-top: auto;
+}
+
+.remove-btn:hover {
+    background-color: #6a1c22;
+}
+
+/* Estilos para o Resumo do Carrinho - Botões de Ação */
+.cart-summary {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 220px;
+    align-items: center;
+}
+
+/* **NOVO ESTILO:** Garantir que o formulário ocupe a largura total */
+.cart-summary form {
+    width: 100%; /* Faz o formulário ocupar a largura total do seu pai */
+    display: flex; /* Transforma o form em flex container para alinhar seu conteúdo */
+    justify-content: center; /* Centraliza o botão dentro do form */
+    align-items: center; /* Alinha verticalmente se houver altura definida */
+}
+
+
+.summary-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+
+.summary-line span:last-child {
+    font-weight: 600;
+    color: #8c262d;
+}
+
+.total-box {
+    border-radius: 10px;
+    border: 2px solid #9C0000;
+}
+
+.total-box .summary-line {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Estilo para o link "continuar comprando" (com borda vermelha) */
+.continue-shopping {
+    margin-top: 5px;
+    font-weight: 500;
+    text-transform: lowercase;
+    color: #8c262d;
+    border: 2px solid #8c262d;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.continue-shopping:hover {
+    background-color: #8c262d;
+    color: #fff;
+}
+
+/* Estilo para o botão "Efetuar pagamento" (fundo vermelho, mesmas medidas do "continuar comprando") */
+.finalizar-btn { /* Usando a classe 'finalizar-btn' do seu HTML */
+    background-color: #8c262d; /* Fundo vermelho */
+    color: #fff; /* Texto branco */
+    border: none; /* Sem borda */
+    padding: 10px 20px; /* Mesmas medidas do .continue-shopping */
+    border-radius: 5px; /* Mesmas medidas do .continue-shopping */
+    font-size: 1.2rem; /* Mesma fonte do .continue-shopping para alinhamento */
+    font-weight: 600; /* Mesmo peso da fonte do .continue-shopping */
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* **CONFIRMADO:** Ocupa a largura total disponível (agora do form pai) */
+    box-sizing: border-box; /* Inclui padding na largura total */
+    margin-top: 10px; /* Espaço entre o link "continuar comprando" e este botão */
+}
+
+.finalizar-btn:hover {
+    background-color: #6a1c22;
+    transform: translateY(-2px);
+}
+
+.collapsible .summary-line {
+    cursor: pointer;
+}
+
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible-header i {
+    transition: transform 0.3s ease;
+}
+
+.collapsible-content {
+    display: none;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 15px;
+}
+
+.collapsible.active .collapsible-content {
+    display: block;
+}
+
+.collapsible.active .collapsible-header i {
+    transform: rotate(180deg);
+}

@@ -1,0 +1,206 @@
+/* --- ESTILOS GERAIS --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FEFBF7; /* Cor de fundo creme para a página toda */
+}
+
+/* --- HEADER --- */
+.header {
+    background-color: #FFF7EF;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 50px;
+    position: sticky; /* Opcional: faz o header ficar fixo no topo ao rolar */
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'italianno', cursive;
+    color: #9C0000;
+    font-size: 85px;
+    text-decoration: none;
+}
+
+.nav-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-bar i {
+    position: absolute;
+    left: 15px;
+    color: #aaa;
+}
+.search-bar input {
+    padding: 8px 15px 8px 40px;
+    border-radius: 20px;
+    border: 1px solid #D1CFCF;
+    width: 250px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.user-actions a {
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+    font-weight: 500;
+}
+.user-actions .cart-icon i {
+    font-size: 22px;
+}
+
+
+/* --- TÍTULO DA PÁGINA --- */
+.page-title-container {
+    padding: 40px 50px 0;
+}
+.catalog-title {
+    font-family: 'Montserrat';
+    font-size: 48px;
+    font-weight: 500;
+    color: #1F4028;
+    margin: 0;
+    text-transform: lowercase;
+}
+
+
+/* --- LAYOUT PRINCIPAL (SIDEBAR + CATÁLOGO) --- */
+.main-content {
+    display: flex;
+    padding: 40px 50px;
+    gap: 40px;
+}
+
+/* --- SIDEBAR (FILTROS) --- */
+.sidebar {
+    width: 250px; /* Largura fixa para a sidebar */
+    flex-shrink: 0; /* Impede que a sidebar encolha */
+}
+.filter-section {
+    margin-bottom: 30px;
+}
+.filter-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F4028;
+    margin-bottom: 15px;
+    text-transform: lowercase;
+}
+.filter-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #1F4028;
+    cursor: pointer;
+}
+.filter-section input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+/* --- CATÁLOGO DE PRODUTOS --- */
+.catalog {
+    flex-grow: 1; /* Faz o catálogo ocupar o resto do espaço */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 30px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto 20px auto;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #8c2d2d;
+    margin: 0 0 20px 0;
+}
+
+.add-to-cart {
+    background-color: #8c2d2d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.add-to-cart:hover {
+    background-color: #6a2222;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas para tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column; /* Empilha a sidebar e o catálogo em celulares */
+    }
+    .sidebar {
+        width: 100%; /* Sidebar ocupa a largura toda */
+    }
+    .product-grid {
+        grid-template-columns: 1fr; /* 1 coluna para celulares */
+    }
+}

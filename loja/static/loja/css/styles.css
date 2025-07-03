@@ -1,0 +1,232 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #FFF7EF;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.top-bar {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 100px;
+}
+
+.logo {
+    font-family: 'italianno';
+    color: #9C0000;
+    font-size: 85px;
+    text-decoration: none;
+}
+
+nav a {
+    font-family: 'montserrat';
+    margin: 0 50px;
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+}
+
+.search-login-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-login-cart input[type="text"] {
+    font-family: 'montserrat';
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-right: 50px;
+}
+
+.search-login-cart .login {
+    font-family: 'montserrat';
+    margin-right: 50px;
+    text-decoration: none;
+    color: #9C0000;
+    font-size: 20px;
+}
+
+.cart i {
+    color: #9C0000;
+    font-size: 18px;
+}
+
+.hero-image {
+    background-image: url('../imagens/vinho.png');
+    height: 88.74vh;
+    background-size: cover;
+    background-position: center;
+}
+.adega {
+    background-image: url('../imagens/adega.png');
+    background-color: #FFF7EF;
+    background-size: contain;  
+    background-position: right center; 
+    background-repeat: no-repeat;
+    height: 89vh;
+    width: 100%; 
+}
+.sobre {
+  position: absolute;
+  top: 15%;
+  left: 80px;
+  color: #1F4028;
+  font-family: 'Montserrat', sans-serif;
+  width: 900px;
+}
+.sobre h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+.sobre p {
+  font-size: 25px;
+  line-height: 1.5;
+  text-align: justify;
+}
+footer {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+footer a {
+    margin-left: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+footer a:hover {
+    color: #9C0000;
+}
+.h2{
+    display: block;
+    color: #9C0000;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background-color: #FFF7EF;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border-radius: 15px;
+  width: 320px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal-content form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #9C0000;
+}
+
+.modal-content form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.modal-content form button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background-color: #9C0000;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: medium;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content form button:hover {
+  background-color: #7a0000;
+}
+
+button.login {
+  background: none;
+  border: none;
+  color: #9C0000;
+  font-family: 'montserrat', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 50px;
+}
+button.login:focus {
+  outline: none;
+  text-decoration: underline;
+}
+button.login{background: none;
+  border: none;
+  color: #9C0000;
+  font-family: 'montserrat', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 15px;
+  margin-right: 10px;
+}
+button.register {
+  background: none;
+  border: none;
+  color: #1F4028;
+  font-family: 'montserrat', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 15px;
+  margin-right: 10px;
+}
+
+button.login:focus,
+button.register:focus {
+  outline: none;
+  text-decoration: underline;
+}
+.register-link {
+    background: none;
+    border: none;
+    color: #1F4028;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline;
+    padding: 0;
+}

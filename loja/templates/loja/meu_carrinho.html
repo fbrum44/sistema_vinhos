@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Carrinho - Winery</title>
+    <link rel="stylesheet" href="{% static 'loja/css/meu_carrinho.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+       <a href="{% url 'index' %}" class="logo">winery</a>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'sobre' %}">sobre</a></li>
+                <li><a href="{% url 'catalogo' %}">vinhos</a></li>
+                <li><a href="#">kits</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="buscar vinhos">
+        </div>
+        <div class="user-actions">
+            <a href="#" class="login-link">login</a>
+            <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="cart-title"><i class="fa-solid fa-cart-shopping"></i> meu carrinho</h1>
+            <div class="cart-container">
+                  <div class="cart-items">
+                    {% for item in carrinho %}
+                    <div class="cart-item">
+                        <div class="item-image">
+                        <img src="{% static 'loja/imagens/' %}{{ item.imagem }}" alt="Imagem do Vinho">
+                        </div>
+                        <div class="item-details">
+                        <span class="item-name">{{ item.nome }} x {{ item.quantidade }}</span>
+                        <span class="item-price">R${{ item.preco|floatformat:2 }}</span>
+                        <form method="post" action="{% url 'remover_do_carrinho' item.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="remove-btn">Excluir</button>
+                        </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Resumo -->
+                <div class="cart-summary">
+                    <div class="summary-box total-box">
+                    <div class="summary-line">
+                        <span>total</span>
+                        <span>R$ {{ total|floatformat:2 }}</span>
+                    </div>
+                    </div>
+
+                    <a href="{% url 'catalogo' %}" class="continue-shopping">continuar comprando</a>
+            <form action="{% url 'efetuar_pagamento' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="finalizar-btn">Efetuar pagamento</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
